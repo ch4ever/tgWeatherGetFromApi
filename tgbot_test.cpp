@@ -8,13 +8,6 @@
 
 using namespace std;
 
-// Проверка на валидность UTF-8
-bool isValidUTF8(const string& str) {
-    return std::all_of(str.begin(), str.end(), [](unsigned char c) {
-        return (c >= 0 && c <= 127) || (c >= 192 && c <= 247); // Проверка на корректные байты UTF-8
-        });
-}
-
 size_t WriteCallBack(void* contents, size_t size, size_t nmemb, void* userp) {
     ((string*)userp)->append((char*)contents, size * nmemb);
     return size * nmemb;
@@ -42,7 +35,7 @@ int main() {
     setlocale(LC_ALL, "Russian");
 
     // Запуск бота
-    TgBot::Bot bot("7095572700:AAFBH7LoH5XBTu4VpwFQPdBmFuBImPmEr6Y");
+    TgBot::Bot bot("TOKEN");
     unordered_map<int64_t, string> userState;
 
     // Реакция на команду /start
